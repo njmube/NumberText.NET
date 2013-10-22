@@ -7,10 +7,11 @@
     <ProjectGuid>{DE9A2942-CDB5-4111-9E2F-6F53C5DC5479}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NumberText.NET</RootNamespace>
+    <RootNamespace>NumberText</RootNamespace>
     <AssemblyName>NumberText.NET</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,8 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extention\NumberTextExtention.cs" />
-    <Compile Include="NumberText.cs" />
+    <Compile Include="NumberTextExtention.cs" />
+    <Compile Include="NumberTextConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Strings.cs" />
   </ItemGroup>

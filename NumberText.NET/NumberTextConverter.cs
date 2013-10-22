@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NumberText.NET
+namespace NumberText
 {
-    public class NumberText
+    public class NumberTextConverter
     {
         private Dictionary<int, string> Texts;
 
-        public NumberText()
+        public NumberTextConverter()
         {
             Texts = new Dictionary<int, string>();
             Strings.Initialize(StringLanguage.Turkish);
@@ -18,7 +18,7 @@ namespace NumberText.NET
             Texts = Strings.texts;
         }
 
-        public NumberText(StringLanguage lang)
+        public NumberTextConverter(StringLanguage lang)
         {
             Texts = new Dictionary<int, string>();
             Strings.Initialize(lang);
