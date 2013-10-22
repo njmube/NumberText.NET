@@ -29,6 +29,7 @@ namespace NumberText.NET
 
         private static void GetValues_EN()
         {
+            texts.Add(-1, "minus");
             texts.Add(0, "zero");
             texts.Add(1, "one");
             texts.Add(2, "two");
@@ -66,6 +67,7 @@ namespace NumberText.NET
 
         private static void GetValues_TR()
         {
+            texts.Add(-1, "eksi");
             texts.Add(0, "sıfır");
             texts.Add(1, "bir");
             texts.Add(2, "iki");
@@ -88,17 +90,17 @@ namespace NumberText.NET
             texts.Add(19, "ondokuz");
             texts.Add(20, "yirmi");
             texts.Add(30, "otuz");
-            texts.Add(40, "forty");
-            texts.Add(50, "fifty");
-            texts.Add(60, "sixty");
-            texts.Add(70, "seventy");
-            texts.Add(80, "eighty");
-            texts.Add(90, "ninety");
-            texts.Add(100, "hundred");
+            texts.Add(40, "kırk");
+            texts.Add(50, "elli");
+            texts.Add(60, "altmış");
+            texts.Add(70, "yetmiş");
+            texts.Add(80, "seksen");
+            texts.Add(90, "doksan");
+            texts.Add(100, "yüz");
 
-            texts.Add(1000000000, "billion");
-            texts.Add(1000000, "million");
-            texts.Add(1000, "thousand");
+            texts.Add(1000000000, "milyar");
+            texts.Add(1000000, "milyon");
+            texts.Add(1000, "bin");
         }
     }
 }

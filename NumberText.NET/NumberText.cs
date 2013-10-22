@@ -9,73 +9,89 @@ namespace NumberText.NET
     public class NumberText
     {
         private Dictionary<int, string> Texts;
-        private Dictionary<int, string> scales = new Dictionary<int, string>();
-
-        private StringBuilder builder;
 
         public NumberText()
         {
             Texts = new Dictionary<int, string>();
-            Strings.Initialize(StringLanguage.English);
+            Strings.Initialize(StringLanguage.Turkish);
+            Texts.Clear();
+            Texts = Strings.texts;
+        }
+
+        public NumberText(StringLanguage lang)
+        {
+            Texts = new Dictionary<int, string>();
+            Strings.Initialize(lang);
+            Texts.Clear();
             Texts = Strings.texts;
         }
 
         public string ToText(int num)
         {
-            builder = new StringBuilder();
+            string builder = String.Empty;
 
-            if (QuickText(num))
-                return builder.ToString();
+            if (num < 0)
+                return Texts[-1] + ToText(Math.Abs(num));
 
-            string rawnumber = num.ToString();
-            char[] a = rawnumber.ToCharArray();
-            Array.Reverse(a);
+            //if (QuickText(num))
+            //    return builder.ToString();
 
+            if ((num / 1000000) > 0)
+            {
+                //if ((num / 1000000) != 1)
+                builder += ToText(num / 1000000);
+                builder += " " + Texts[1000000];
+                num %= 1000000;
+            }
+
+            if ((num / 1000) > 0)
+            {
+                if ((num / 1000) != 1)
+                    builder += ToText(num / 1000);
+                builder += " " + Texts[1000];
+                num %= 1000;
+            }
+
+            if ((num / 100) > 0)
+            {
+                if ((num / 100) != 1)
+                    builder += ToText(num / 100);
+                builder += " " + Texts[100];
+                num %= 100;
+            }
+
+            if (num > 0)
+            {
+                if (!String.IsNullOrEmpty(builder.ToString()))
+                    builder += " ";
+
+                if (num < 20)
+                    builder += Texts[num];
+                else
+                {
+                    builder += Texts[(num / 10) * 10];
+                    if ((num % 10) > 0)
+                        builder += " " + Texts[num % 10];
+                }
+            }
+
+            //string rawnumber = num.ToString();
+            //char[] a = rawnumber.ToCharArray();
+            //Array.Reverse(a);
+
+            builder += "";
             return builder.ToString().Trim();
         }
 
-        private bool QuickText(int num)
-        { 
-            string value = "";
-            if (Texts.TryGetValue(num, out value))
-            {
-                builder.Append(Texts[num].ToString());
-                return true;
-            }
-            else return false;                
-        }
-
-
-        
-        private void AppendUnits(int num)
-        {
-            if (num > 0)
-            {
-                builder.AppendFormat("{0} ", Texts[num]);
-            }
-        }
-
-        private int AppendTens(int num)
-        {
-            if (num > 20)
-            {
-                var tens = ((int)(num / 10)) * 10;
-                builder.AppendFormat("{0} ", Texts[tens]);
-                num = num - tens;
-            }
-            return num;
-        }
-
-        private int AppendHundreds(int num)
-        {
-            if (num > 99)
-            {
-                var hundreds = ((int)(num / 100));
-                builder.AppendFormat("{0} hundred ", Texts[hundreds]);
-                num = num - (hundreds * 100);
-            }
-            return num;
-        }
-
+        //private bool QuickText(int num)
+        //{ 
+        //    string value = "";
+        //    if (Texts.TryGetValue(num, out value))
+        //    {
+        //        builder.Append(Texts[num].ToString());
+        //        return true;
+        //    }
+        //    else return false;                
+        //}
     }
 }
